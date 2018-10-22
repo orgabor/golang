@@ -1,0 +1,65 @@
+/*
+
+We've seen that Go can store integers,
+floating-point numbers, strings, booleans, and more.
+But suppose we had one integer that represents a number of minutes, and another that represents a number of hours? How do you tell those two apart? How do you avoid accidentally storing the hours integer in the minutes integer, or vice-versa?
+Go lets you create custom types that will help you avoid these sort of mix-ups.
+
+
+*/
+
+/*
+Type declaration
+Defines new named type that has same
+underlying type as an existing type https://golang.org/ref/spec#Type_declarations
+
+
+
+*/
+
+package main
+
+import "fmt"
+
+type Minutes int
+type Hours int
+type Weight float64
+type Title string
+type Answer bool
+
+func main() {
+	minutes := Minutes(37)
+	hours := Hours(2)
+	weight := Weight(945.7)
+	name := Title("The Matrix")
+	answer := Answer(true)
+	fmt.Println(minutes, hours, weight, name, answer)
+	minutes += 3
+	fmt.Println(minutes)
+	comapre_type()
+
+}
+
+/*
+
+Underlying type determines intrinsic operations it supports
+type Minutes int will support all the operations int does: addition, subtraction, etc.
+type Title string will support the operations string does, like concatenation of other strings.
+
+
+Can also be compared to a value of same named type, or value of same underlying type
+
+
+*/
+
+func comapre_type() {
+
+	weight := Weight(945.7)
+	if weight > Weight(907.3) {
+		fmt.Println("Capacity exceeded")
+	}
+	if weight > 907.3 {
+		fmt.Println("Capacity exceeded")
+	}
+
+}
