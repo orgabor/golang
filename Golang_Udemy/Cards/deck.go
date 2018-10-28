@@ -7,6 +7,7 @@ which is a slice of string
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -67,5 +68,19 @@ func newDeckFromFile(filename string) deck {
 		os.Exit(1)
 
 	}
+	//very short varaible names are very common in golang s is for slice or for string
+	s := strings.Split(string(bs), ",")
 
+	return deck(s)
+
+}
+
+func (d deck) shuffle() {
+
+	for i := range d {
+		newPosition := rand.Intn(len(d) - 1)
+
+		d[i], d[newPosition] = d[newPosition], d[i]
+
+	}
 }

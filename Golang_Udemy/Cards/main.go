@@ -9,9 +9,13 @@ func main() {
 		hand.print()
 		remainingCards.print()
 	*/
+	/*
+		cards := newDeck()
+		//fmt.Println(cards.toString())
+		cards.saveToFile("my_cards")
+	*/
 
 	cards := newDeck()
-	//fmt.Println(cards.toString())
-	cards.saveToFile("my_cards")
-
+	cards.shuffle()
+	cards.print()
 }
